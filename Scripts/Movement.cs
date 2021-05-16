@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
     public Sprite potionIndicationSpeed;
     public Sprite potionIndicationJumpBoost;
     public Sprite potionIndicationRegeneration;
+    public Transform cosmeticHat;
 
     private bool facingRight = true; // player is facing right at the start
     private bool facingLeft = false;
@@ -137,6 +138,7 @@ public class Movement : MonoBehaviour
                 fallAnimationRunning = true;
                 animator.SetTrigger("WalkEnd");
                 animator.SetTrigger("FallStart");
+                cosmeticHat.parent = null;
             }
         }
         if (transform.position.y < deathHeight)

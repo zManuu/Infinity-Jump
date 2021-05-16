@@ -9,7 +9,8 @@ public class SettingsMenuManagement : MonoBehaviour
 
     private void Start()
     {
-        musicVolumeSlider.value = PlayerPrefs.GetFloat("Music_Volume", 0.01f) * 100;
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("Music_Volume", 0f) * 100;
+        musicVolumeIndicator.text = musicVolumeSlider.value.ToString() + "%";
     }
 
     public void OnMusicVolumeChange()
