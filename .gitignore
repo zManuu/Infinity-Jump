@@ -1,1 +1,7 @@
-*.meta
+# Ignore Everything
+/*
+
+# Except for these:
+!/.gitignore
+!/Assets
+!/ProjectSettings
