@@ -63,7 +63,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   animator: {fileID: 5431290307560067683}
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 8888427823986920395, guid: 336f25b5a9ea25b428f95ff57021a838, type: 3}
   potionIndicator1: {fileID: 0}
   potionIndicator2: {fileID: 0}
   potionIndicator3: {fileID: 0}
