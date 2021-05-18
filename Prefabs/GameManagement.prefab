@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7750299487036255735}
   - component: {fileID: 7750299487036255721}
   - component: {fileID: 7395808805042761641}
+  - component: {fileID: 7936525069220369475}
   - component: {fileID: 5689526306937838094}
   m_Layer: 0
   m_Name: GameManagement
@@ -72,6 +73,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 5689526306937838094}
+--- !u!114 &7936525069220369475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750299487036255734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c25f2f69b56c645a6a56594f931b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  largeImage: icon_large
+  smallImage: potion_jumpboost
+  largeText: Infinity-Jump
+  smallText: Made by zManuu
 --- !u!82 &5689526306937838094
 AudioSource:
   m_ObjectHideFlags: 0

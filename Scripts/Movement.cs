@@ -36,10 +36,12 @@ public class Movement : MonoBehaviour
     private bool fallAnimationRunning = false;
     private bool itemTaken = false;
     private bool onLadder = false;
+    private DiscordManagement discordManagement;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        discordManagement = FindObjectOfType<DiscordManagement>();
     }
 
     private void Update()
@@ -164,17 +166,23 @@ public class Movement : MonoBehaviour
                 Destroy(collision.gameObject);
                 Invoke("ClearSpeedEffect", PotionManager.TIME_SPEED);
                 ApplyPotionIndicator(potionIndicationSpeed, PotionManager.TIME_SPEED);
+                discordManagement.ApplyPresence(PotionManager.TEXTURE_SPEED, PotionManager.TEXT_SPEED);
+                Invoke("ClearDiscordPresence", PotionManager.TIME_SPEED);
                 break;
             case "Potion_JumpBoost":
                 jumpVector *= PotionManager.MULTIPLIER_JUMPBOOST;
                 Destroy(collision.gameObject);
                 Invoke("ClearJumpBoostEffect", PotionManager.TIME_JUMPBOOST);
                 ApplyPotionIndicator(potionIndicationJumpBoost, PotionManager.TIME_JUMPBOOST);
+                discordManagement.ApplyPresence(PotionManager.TEXTURE_JUMPBOOST, PotionManager.TEXT_JUMPBOOST);
+                Invoke("ClearDiscordPresence", PotionManager.TIME_JUMPBOOST);
                 break;
             case "Potion_Regeneration":
                 Destroy(collision.gameObject);
                 Invoke("ClearRegenerationEffect", PotionManager.TIME_REGENERATION);
                 ApplyPotionIndicator(potionIndicationRegeneration, PotionManager.TIME_REGENERATION);
+                discordManagement.ApplyPresence(PotionManager.TEXTURE_REGENERATION, PotionManager.TEXT_REGENERATION);
+                Invoke("ClearDiscordPresence", PotionManager.TIME_REGENERATION);
                 break;
             default:
                 break;
@@ -226,6 +234,10 @@ public class Movement : MonoBehaviour
     private void ClearItemTaken()
     {
         itemTaken = false;
+    }
+    private void ClearDiscordPresence()
+    {
+        discordManagement.ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
