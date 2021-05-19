@@ -7,8 +7,8 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        this.tag = "AudioManager";
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("AudioManager");
+        this.tag = "GameManager";
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
         musicSource.volume = PlayerPrefs.GetFloat("Music_Volume", 0.2f);
 
         if (objs.Length > 1)

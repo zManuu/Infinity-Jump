@@ -5,14 +5,28 @@ using UnityEngine.SceneManagement;
 public class DiscordManagement : MonoBehaviour
 {
 
-    public Discord.Discord discord;
+    private static Discord.Discord discord;
+    private static ActivityManager activityManager;
 
     [SerializeField] private string largeImage;
     [SerializeField] private string largeText;
 
+    private void Awake()
+    {
+        this.tag = "GameManager";
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
+        if (objs.Length > 1)
+        {
+            ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Start()
     {
-        discord = new Discord.Discord(844148451449110528, (ulong) CreateFlags.Default);
+        discord = new Discord.Discord(844148451449110528, (ulong)CreateFlags.Default);
+        activityManager = discord.GetActivityManager();
         ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
     }
 
@@ -23,18 +37,17 @@ public class DiscordManagement : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Debug.Log("Application quit");
-        discord.GetActivityManager().ClearActivity((res) => { });
+        activityManager.ClearActivity((res) => { });
         discord.Dispose();
     }
 
     public void ApplyPresence(string smallTexture, string smallText)
     {
         Activity a = GenerateActivity(smallTexture, smallText);
-        discord.GetActivityManager().UpdateActivity(a, (res) =>
+        activityManager.UpdateActivity(a, (res) =>
         {
             if (res == Result.Ok)
-                Debug.Log("Discord status was set!");
+                Debug.Log(string.Format("Discord status was set! [{0} | {1}]", SceneManager.GetActiveScene().name, smallText));
             else
                 Debug.LogWarning("Settings the discord status failed!");
         });
@@ -43,8 +56,8 @@ public class DiscordManagement : MonoBehaviour
     {
         return new Activity
         {
-            Details = "Playing " + SceneManager.GetActiveScene().name,
-            State = "in the overworld...",
+            Details = "Level: " + SceneManager.GetActiveScene().name,
+            State = "Deaths: " + GameManager.deaths,
             Timestamps =
             {
                 Start = 0
