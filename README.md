@@ -1,8 +1,11 @@
 # Infinity-Jump
  A good game.
  
- <br />
 <br />
+
+## Download
+The current version of <b>Infinity-Jump</b> can be found <a href="Releases/LATEST.zip?raw=true">here</a>.
+
 <br />
 
 ## Screenshots
@@ -12,7 +15,11 @@
 
 <br />
 <br />
-<br />
 
-## Download
-The current version of <b>Infinity-Jump</b> can be found <a href="Releases/LATEST.zip?raw=true">here</a>.
+## Credits
+
+<a href="https://github.com/zManuu">Developement, UIDesign, LevelDesign, TileSet</a><br>
+<a href="https://github.com/Cybermork">LevelDesign</a><br>
+<a href="https://rottingpixels.itch.io/">TileSet</a><br>
+<a href="https://fontspace.com/ghielz">Font</a><br>
+<a href="https://icoso.itch.io/">Background Music</a>
