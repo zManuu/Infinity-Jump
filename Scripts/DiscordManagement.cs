@@ -25,24 +25,32 @@ public class DiscordManagement : MonoBehaviour
 
     private void Start()
     {
-        discord = new Discord.Discord(844148451449110528, (ulong)CreateFlags.Default);
-        activityManager = discord.GetActivityManager();
+        discord = new Discord.Discord(844148451449110528, (ulong) CreateFlags.NoRequireDiscord);
+        if (discord != null)
+            activityManager = discord.GetActivityManager();
         ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
     }
 
     private void Update()
     {
-        discord.RunCallbacks();
+        if (discord != null)
+            discord.RunCallbacks();
     }
 
     private void OnApplicationQuit()
     {
-        activityManager.ClearActivity((res) => { });
-        discord.Dispose();
+        if (discord != null)
+        {
+            activityManager.ClearActivity((res) => { });
+            discord.Dispose();
+        }
     }
 
     public void ApplyPresence(string smallTexture, string smallText)
     {
+        if (discord == null)
+            return;
+
         Activity a = GenerateActivity(smallTexture, smallText);
         activityManager.UpdateActivity(a, (res) =>
         {

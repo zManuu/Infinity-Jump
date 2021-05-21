@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static int deaths = 0;
+    public static bool paused = false;
 
     [SerializeField] private int levelSceneOffset;
 
