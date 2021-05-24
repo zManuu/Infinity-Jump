@@ -1,5 +1,6 @@
 ## Download
-The current version of <b>Infinity-Jump</b> can be found <a href="Releases/LATEST.zip?raw=true">here</a>.
+The current version of <b>Infinity-Jump</b> can be found <a href="Releases/LATEST.zip?raw=true">here</a>.<br>
+Older builds can be found <a href="Releases/">here</a>.
 
 ## Screenshots
 <a href="Img/Screenshots">
@@ -16,4 +17,4 @@ The current version of <b>Infinity-Jump</b> can be found <a href="Releases/LATES
 
 ## Trello
 To stay up to date, you can watch the trello-board, just click 
-<a href="https://trello.com/b/8qlJeRb4/infinityjump">here</a>
+<a href="https://trello.com/b/8qlJeRb4/infinityjump">here</a>.
