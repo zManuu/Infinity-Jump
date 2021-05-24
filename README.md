@@ -16,4 +16,4 @@ The current version of <b>Infinity-Jump</b> can be found <a href="Releases/LATES
 
 ## Trello
 To stay up to date, you can watch the trello-board, just click 
-<a href="https://trello.com/invite/b/8qlJeRb4/8f3d0882d43ebfd1b38348583c89c1dd/infinityjump">here</a>
+<a href="https://trello.com/b/8qlJeRb4/infinityjump">here</a>
