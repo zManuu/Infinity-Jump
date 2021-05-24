@@ -72,6 +72,7 @@ MonoBehaviour:
   potionIndicationJumpBoost: {fileID: 21300000, guid: 1afd800aaacc2dc40b4501c4f4835b3a, type: 3}
   potionIndicationRegeneration: {fileID: 21300000, guid: 6cc79218482573648a95fed46f05d87c, type: 3}
   cosmeticHat: {fileID: 8911748422287217896}
+  pauseMenuContainer: {fileID: 0}
 --- !u!212 &5431290307560067687
 SpriteRenderer:
   m_ObjectHideFlags: 0

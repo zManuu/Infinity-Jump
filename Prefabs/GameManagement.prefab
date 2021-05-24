@@ -86,9 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   largeImage: icon_large
-  smallImage: potion_jumpboost
   largeText: Infinity-Jump
-  smallText: Made by zManuu
 --- !u!82 &5689526306937838094
 AudioSource:
   m_ObjectHideFlags: 0

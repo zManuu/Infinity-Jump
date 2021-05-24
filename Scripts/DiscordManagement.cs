@@ -1,6 +1,7 @@
 using UnityEngine;
 using Discord;
 using UnityEngine.SceneManagement;
+using System;
 
 public class DiscordManagement : MonoBehaviour
 {
@@ -25,10 +26,16 @@ public class DiscordManagement : MonoBehaviour
 
     private void Start()
     {
-        discord = new Discord.Discord(844148451449110528, (ulong) CreateFlags.NoRequireDiscord);
-        if (discord != null)
-            activityManager = discord.GetActivityManager();
-        ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
+        try
+        {
+            discord = new Discord.Discord(844148451449110528, (ulong)CreateFlags.NoRequireDiscord);
+            if (discord != null)
+                activityManager = discord.GetActivityManager();
+            ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
+        } catch (Exception e) {
+            Debug.Log(e.StackTrace);
+            discord = null;
+        }
     }
 
     private void Update()

@@ -1,7 +1,6 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Tilemaps;
 
 public class Movement : MonoBehaviour
 {
@@ -36,27 +35,17 @@ public class Movement : MonoBehaviour
     private bool fallAnimationRunning = false;
     private bool itemTaken = false;
     private bool onLadder = false;
-    private bool inPauseCooldown = false;
-    private Rigidbody2D rb;
     private DiscordManagement discordManagement;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         discordManagement = FindObjectOfType<DiscordManagement>();
-        rb = transform.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Escape) && !inPauseCooldown)
-        {
-            GameManager.paused = !GameManager.paused;
-            inPauseCooldown = true;
-            Invoke("ClearInPauseCooldown", 0.5f);
-        }
-
-        if (GameManager.paused)
+        if (PauseController.paused)
             return;
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -110,19 +99,10 @@ public class Movement : MonoBehaviour
         }
         cameraTransform.position = transform.position;
     }
-    private void ClearInPauseCooldown()
-    {
-        inPauseCooldown = false;
-        if (walkAnimationRunning)
-        {
-            walkAnimationRunning = false;
-            animator.SetTrigger("WalkEnd");
-        }
-    }
 
     private void FixedUpdate()
     {
-        if (GameManager.paused)
+        if (PauseController.paused)
             return;
 
         CheckHeight();
