@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSceneOffset: 5
+  mainMenuIndex: 0
+  settingsMenuIndex: 2
 --- !u!114 &7750299487036255721
 MonoBehaviour:
   m_ObjectHideFlags: 0

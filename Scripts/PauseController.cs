@@ -35,4 +35,28 @@ public class PauseController : MonoBehaviour
         }
     }
 
+    public void HandleResumeClick()
+    {
+        paused = false;
+        pauseMenuContainer.gameObject.SetActive(paused);
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
+    }
+
+    public void HandleSettingsClick()
+    {
+        paused = false;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 1f;
+        FindObjectOfType<GameManager>().RequestSettingsMenu();
+    }
+
+    public void HandleQuitClick()
+    {
+        paused = false;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 1f;
+        FindObjectOfType<GameManager>().RequestMainMenu();
+    }
+
 }

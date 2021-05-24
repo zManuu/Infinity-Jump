@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static int deaths = 0;
 
     [SerializeField] private int levelSceneOffset;
+    [SerializeField] private int mainMenuIndex;
+    [SerializeField] private int settingsMenuIndex;
 
     void Start()
     {
@@ -30,6 +32,15 @@ public class GameManager : MonoBehaviour
         }
         SceneManager.LoadScene(currentLevel + levelSceneOffset + 1);
         PauseController.paused = false;
+    }
+
+    public void RequestMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuIndex);
+    }
+    public void RequestSettingsMenu()
+    {
+        SceneManager.LoadScene(settingsMenuIndex);
     }
 
 }
