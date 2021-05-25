@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveDeaths();
+        Save();
     }
 
     public void RequestRespawn()
@@ -41,18 +41,19 @@ public class GameManager : MonoBehaviour
     }
     public void RequestMainMenu()
     {
-        SaveDeaths();
+        Save();
         SceneManager.LoadScene(mainMenuIndex);
     }
     public void RequestSettingsMenu()
     {
-        SaveDeaths();
+        Save();
         SceneManager.LoadScene(settingsMenuIndex);
     }
 
-    private void SaveDeaths()
+    private void Save()
     {
         PlayerPrefs.SetInt("CurrentDeaths", deaths);
+        CoinManagement.Save();
     }
 
 }

@@ -12,6 +12,11 @@ public class PauseController : MonoBehaviour
     private void Start()
     {
         pauseMenuContainer = FindObjectOfType<UIContainer>().pauseMenuContainer;
+
+        CoinManagement.CoinAddEvent += (newBalance) =>
+        {
+            FindObjectOfType<UIContainer>().coinIndicator.text = newBalance.ToString();
+        };
     }
 
     private void Update()

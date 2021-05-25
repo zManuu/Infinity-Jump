@@ -73,10 +73,6 @@ public class DiscordManagement : MonoBehaviour
         {
             Details = "Level: " + SceneManager.GetActiveScene().name,
             State = "Deaths: " + GameManager.deaths,
-            Timestamps =
-            {
-                Start = 0
-            },
             Assets =
             {
                 LargeImage = largeImage,
