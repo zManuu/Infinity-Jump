@@ -61,10 +61,10 @@ public class DiscordManagement : MonoBehaviour
         Activity a = GenerateActivity(smallTexture, smallText);
         activityManager.UpdateActivity(a, (res) =>
         {
-            if (res == Result.Ok)
+            /*if (res == Result.Ok)
                 Debug.Log(string.Format("Discord status was set! [{0} | {1}]", SceneManager.GetActiveScene().name, smallText));
             else
-                Debug.LogWarning("Settings the discord status failed!");
+                Debug.LogWarning("Settings the discord status failed!");*/
         });
     }
     private Activity GenerateActivity(string smallTexture, string smallText)

@@ -11,9 +11,7 @@ public class PauseController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Starting...");
         pauseMenuContainer = FindObjectOfType<UIContainer>().pauseMenuContainer;
-        Debug.Log(pauseMenuContainer.GetInstanceID());
     }
 
     private void Update()
