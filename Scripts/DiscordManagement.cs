@@ -8,6 +8,7 @@ public class DiscordManagement : MonoBehaviour
 
     private static Discord.Discord discord;
     private static ActivityManager activityManager;
+    private static long timestamp;
 
     [SerializeField] private string largeImage;
     [SerializeField] private string largeText;
@@ -28,6 +29,7 @@ public class DiscordManagement : MonoBehaviour
     {
         try
         {
+            timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             discord = new Discord.Discord(844148451449110528, (ulong)CreateFlags.NoRequireDiscord);
             if (discord != null)
                 activityManager = discord.GetActivityManager();
@@ -73,6 +75,10 @@ public class DiscordManagement : MonoBehaviour
         {
             Details = "Level: " + SceneManager.GetActiveScene().name,
             State = "Deaths: " + GameManager.deaths,
+            Timestamps =
+            {
+                Start = timestamp
+            },
             Assets =
             {
                 LargeImage = largeImage,
