@@ -11,6 +11,8 @@ public class CosmeticController : MonoBehaviour
     [SerializeField] private bool isCosmeticSelection;
     [SerializeField] private Image imageHat, imageCape, imageShoes;
     [SerializeField] private Text priceHat, priceCape, priceShoes;
+    [SerializeField] private Text buyHat, buyCape, buyShoes;
+    [SerializeField] private Text coinIndicator;
 
     private List<Cosmetic> unlockedCosmetics;
     private Cosmetic activeHat;
@@ -25,6 +27,7 @@ public class CosmeticController : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetInt("Coins", 500);
         unlockedCosmetics = new List<Cosmetic>();
         for (int i=0; i<30; i++)
         {
@@ -102,6 +105,13 @@ public class CosmeticController : MonoBehaviour
                 imageHat.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHat.preferedSizeImage.y);
                 imageHat.sprite = newHat.sprite;
                 priceHat.text = string.Format("{0} [{1}]", newHat.name, newHat.price.ToString());
+                if (unlockedCosmetics.Contains(newHat))
+                {
+                    buyHat.text = "Select";
+                } else
+                {
+                    buyHat.text = "Buy";
+                }
                 break;
         }
     }
@@ -128,7 +138,21 @@ public class CosmeticController : MonoBehaviour
     }
     public void OnSelectHat()
     {
-        activeHat = cosmetics[currentHat];
+        Cosmetic c = cosmetics[currentHat];
+        if (unlockedCosmetics.Contains(c))
+        {
+            activeHat = c;
+        } else
+        {
+            if (CoinManagement.GetCoins() >= c.price)
+            {
+                CoinManagement.RemoveCoins(c.price);
+                unlockedCosmetics.Add(c);
+                activeHat = c;
+                UpdateView(CosmeticType.Hat);
+                coinIndicator.text = CoinManagement.GetCoins().ToString();
+            }
+        }
         Save();
     }
 

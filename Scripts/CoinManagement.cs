@@ -32,6 +32,10 @@ public class CoinManagement : MonoBehaviour
         coins += amount;
         CoinAddEvent?.Invoke(coins);
     }
+    public static void RemoveCoins(int amount)
+    {
+        coins -= amount;
+    }
     public static void Save()
     {
         PlayerPrefs.SetInt("Coins", coins);

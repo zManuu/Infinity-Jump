@@ -1149,6 +1149,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: buyHat
+      value: 
+      objectReference: {fileID: 458096655}
+    - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
       propertyPath: imageHat
       value: 
       objectReference: {fileID: 1544945334}
@@ -1156,6 +1160,10 @@ PrefabInstance:
       propertyPath: priceHat
       value: 
       objectReference: {fileID: 288034233}
+    - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: coinIndicator
+      value: 
+      objectReference: {fileID: 733012153}
     - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
       propertyPath: menuContainerHat
       value: 
