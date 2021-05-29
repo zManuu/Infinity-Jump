@@ -1122,10 +1122,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7243991156546576385, guid: 8a537a1890a88f24ea5aa13be71b8d4b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.050980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243991156546576385, guid: 8a537a1890a88f24ea5aa13be71b8d4b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243991156546576385, guid: 8a537a1890a88f24ea5aa13be71b8d4b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.83137256
+      objectReference: {fileID: 0}
     - target: {fileID: 7243991156546576387, guid: 8a537a1890a88f24ea5aa13be71b8d4b, type: 3}
       propertyPath: m_Name
       value: Coins
       objectReference: {fileID: 0}
+    - target: {fileID: 7243991156596090489, guid: 8a537a1890a88f24ea5aa13be71b8d4b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 814750f2bfcb5554aa13201153b437d3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a537a1890a88f24ea5aa13be71b8d4b, type: 3}
 --- !u!224 &8210315432216738794 stripped

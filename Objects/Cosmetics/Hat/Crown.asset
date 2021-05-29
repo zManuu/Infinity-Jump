@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   sprite: {fileID: 21300000, guid: 2f857b9d619ef8541a796df0b390fc3d, type: 3}
+  preferedSizeImage: {x: 100, y: 58}
+  price: 100

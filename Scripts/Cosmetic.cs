@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static CosmeticController;
 
@@ -9,5 +7,7 @@ public class Cosmetic : ScriptableObject
 
     public CosmeticType type;
     public Sprite sprite;
+    public Vector2 preferedSizeImage;
+    public int price;
 
 }

@@ -5,12 +5,12 @@ using UnityEngine;
 public class CosmeticController : MonoBehaviour
 {
 
-    [Tooltip("0-9: hats\n10-19: caps\n20-29: shoes")]
-    public Cosmetic[] cosmetics;
-    public bool isCosmeticSelection;
-    public Transform menuContainerHat;
-    public Transform menuContainerCape;
-    public Transform menuContainerShoes;
+    [Tooltip("0-9: hats\n10-19: caps\n20-29: shoes")] [SerializeField]
+    private Cosmetic[] cosmetics;
+
+    [SerializeField] private bool isCosmeticSelection;
+    [SerializeField] private Image imageHat, imageCape, imageShoes;
+    [SerializeField] private Text priceHat, priceCape, priceShoes;
 
     private List<Cosmetic> unlockedCosmetics;
     private Cosmetic activeHat;
@@ -35,22 +35,27 @@ public class CosmeticController : MonoBehaviour
         }
 
         activeHat = cosmetics[PlayerPrefs.GetInt("Cosmetic_Active_Hat")];
-        Debug.Log("Active hat: " + activeHat.name);
         //activeCape = cosmetics[PlayerPrefs.GetInt("Cosmetic_Active_Cape")];
         //activeShoes = cosmetics[PlayerPrefs.GetInt("Cosmetic_Active_Shoes")];
-        if (!isCosmeticSelection)
-            ActivateCosmetics();
+
+        if (isCosmeticSelection)
+        {
+            currentHat = GetIndex(activeHat);
+            UpdateView(CosmeticType.Hat);
+            //currentCape = GetIndex(activeCape);
+            //UpdateView(CosmeticType.Cape);
+            //currentShoes = GetIndex(activeShoes);
+            //UpdateView(CosmeticType.Shoes);
+        }
+        else
+        {
+            rendererHat = GameObject.Find("Player").transform.GetChild(2).GetComponent<SpriteRenderer>();
+            rendererHat.sprite = activeHat.sprite;
+            //rendererCape = GameObject.Find("Player").transform.GetChild(3).GetComponent<SpriteRenderer>();
+            //rendererShoes = GameObject.Find("Player").transform.GetChild(4).GetComponent<SpriteRenderer>();
+        }
     }
 
-    public void ActivateCosmetics()
-    {
-        rendererHat = GameObject.Find("Player").transform.GetChild(2).GetComponent<SpriteRenderer>();
-        //rendererCape = GameObject.Find("Player").transform.GetChild(3).GetComponent<SpriteRenderer>();
-        //rendererShoes = GameObject.Find("Player").transform.GetChild(4).GetComponent<SpriteRenderer>();
-        rendererHat.sprite = activeHat.sprite;
-        //rendererCape.sprite = activeCape.sprite;
-        //rendererShoes.sprite = activeShoes.sprite;
-    }
     public void Save()
     {
         unlockedCosmetics.ForEach(unlockedCosmetic =>
@@ -87,6 +92,19 @@ public class CosmeticController : MonoBehaviour
         }
         return c;
     }
+    private void UpdateView(CosmeticType type)
+    {
+        switch (type)
+        {
+            case CosmeticType.Hat:
+                Cosmetic newHat = cosmetics[currentHat];
+                imageHat.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newHat.preferedSizeImage.x);
+                imageHat.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHat.preferedSizeImage.y);
+                imageHat.sprite = newHat.sprite;
+                priceHat.text = string.Format("{0} [{1}]", newHat.name, newHat.price.ToString());
+                break;
+        }
+    }
 
     void OnApplicationQuit() => Save();
 
@@ -97,7 +115,7 @@ public class CosmeticController : MonoBehaviour
             return;
         }
         currentHat++;
-        menuContainerHat.GetChild(0).GetComponent<Image>().sprite = cosmetics[currentHat].sprite;
+        UpdateView(CosmeticType.Hat);
     }
     public void OnLastHat()
     {
@@ -106,13 +124,12 @@ public class CosmeticController : MonoBehaviour
             return;
         }
         currentHat--;
-        menuContainerHat.GetChild(0).GetComponent<Image>().sprite = cosmetics[currentHat].sprite;
+        UpdateView(CosmeticType.Hat);
     }
     public void OnSelectHat()
     {
         activeHat = cosmetics[currentHat];
         Save();
-        Debug.Log("Saving current hat as " + activeHat.name);
     }
 
     public enum CosmeticType
