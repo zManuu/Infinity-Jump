@@ -189,6 +189,10 @@ public class Movement : MonoBehaviour
                 discordManagement.ApplyPresence(PotionManager.TEXTURE_REGENERATION, PotionManager.TEXT_REGENERATION);
                 Invoke("ClearDiscordPresence", PotionManager.TIME_REGENERATION);
                 break;
+            case "Item_Coin":
+                Destroy(collision.gameObject);
+                CoinManagement.AddCoins(1);
+                break;
             default:
                 break;
         }

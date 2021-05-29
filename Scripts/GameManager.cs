@@ -25,11 +25,13 @@ public class GameManager : MonoBehaviour
     public void RequestRespawn()
     {
         deaths++;
+        Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void RequestNextLevel()
     {
         deaths = 0;
+        Save();
         int currentUnlockedLevel = PlayerPrefs.GetInt("lastUnlockedLevel", 1);
         int currentLevel = SceneManager.GetActiveScene().buildIndex - levelSceneOffset;
         if (currentLevel > currentUnlockedLevel)

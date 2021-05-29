@@ -936,6 +936,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7243991156546576384, guid: 8a537a1890a88f24ea5aa13be71b8d4b, type: 3}
   m_PrefabInstance: {fileID: 733012151}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &733012153 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7243991156546576385, guid: 8a537a1890a88f24ea5aa13be71b8d4b, type: 3}
+  m_PrefabInstance: {fileID: 733012151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1012837177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1029,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1012837180}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1150071680}
+        m_TargetAssemblyTypeName: CosmeticController, Assembly-CSharp
+        m_MethodName: OnNextHat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1012837180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1071,7 +1094,7 @@ PrefabInstance:
     - target: {fileID: 4412297637865741346, guid: 18d62e1ee81dbae47a27240683f36a3e, type: 3}
       propertyPath: coinIndicator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 733012153}
     - target: {fileID: 7614061150854432861, guid: 18d62e1ee81dbae47a27240683f36a3e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1125,6 +1148,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: menuContainerHat
+      value: 
+      objectReference: {fileID: 656142354}
+    - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: isCosmeticSelection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1175,6 +1206,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+--- !u!114 &1150071680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+  m_PrefabInstance: {fileID: 1150071679}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d37931b77ee55649870d61992688367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1275710839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,7 +1374,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1337983799}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1150071680}
+        m_TargetAssemblyTypeName: CosmeticController, Assembly-CSharp
+        m_MethodName: OnSelectHat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1337983799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,6 +1489,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 406086712}
     m_Modifications:
+    - target: {fileID: 7655939531712620417, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655939531712620417, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655939531712620417, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1150071680}
+    - target: {fileID: 7655939531712620417, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655939531712620417, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Save
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655939531712620417, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CosmeticController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655939531712620417, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7655939531712620418, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1612,7 +1694,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1801183111}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1150071680}
+        m_TargetAssemblyTypeName: CosmeticController, Assembly-CSharp
+        m_MethodName: OnLastHat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1801183111
 MonoBehaviour:
   m_ObjectHideFlags: 0

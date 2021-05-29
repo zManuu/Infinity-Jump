@@ -10,8 +10,9 @@ public class CoinManagement : MonoBehaviour
 
     [SerializeField] public Text coinIndicator;
 
-    private void Start()
+    private void Awake()
     {
+
         coins = PlayerPrefs.GetInt("Coins", 0);
 
         if (coinIndicator == null)
@@ -19,6 +20,7 @@ public class CoinManagement : MonoBehaviour
             coinIndicator = FindObjectOfType<UIContainer>().coinIndicator;
         }
         coinIndicator.text = coins.ToString();
+
     }
 
     public static int GetCoins()
