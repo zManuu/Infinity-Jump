@@ -10,6 +10,9 @@ public class DiscordManagement : MonoBehaviour
     private static ActivityManager activityManager;
     private static long timestamp;
 
+    public static bool rpcEnabled;
+    public static bool rpcSet;
+
     [SerializeField] private string largeImage;
     [SerializeField] private string largeText;
 
@@ -19,8 +22,9 @@ public class DiscordManagement : MonoBehaviour
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
         if (objs.Length > 1)
         {
-            ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
             Destroy(this.gameObject);
+            ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
+            rpcEnabled = bool.Parse(PlayerPrefs.GetString("Discord_RPC_Enabled", "true"));
         }
         DontDestroyOnLoad(this.gameObject);
     }
@@ -42,22 +46,31 @@ public class DiscordManagement : MonoBehaviour
 
     private void Update()
     {
-        if (discord != null)
+        if (discord != null && rpcEnabled)
             discord.RunCallbacks();
     }
 
-    private void OnApplicationQuit()
+    public void OnApplicationQuit()
     {
-        if (discord != null)
+        ClearRPC();
+    }
+
+    public void ClearRPC()
+    {
+        try
         {
-            activityManager.ClearActivity((res) => { });
-            discord.Dispose();
-        }
+            Debug.Log("Clearing RPC...");
+            if (discord != null && rpcEnabled)
+            {
+                activityManager.ClearActivity((res) => { });
+                discord.Dispose();
+            }
+        } catch (Exception e) { Debug.Log(e.StackTrace); }
     }
 
     public void ApplyPresence(string smallTexture, string smallText)
     {
-        if (discord == null)
+        if (discord != null && rpcEnabled)
             return;
 
         Activity a = GenerateActivity(smallTexture, smallText);

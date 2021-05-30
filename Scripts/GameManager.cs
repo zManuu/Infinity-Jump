@@ -10,6 +10,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int mainMenuIndex;
     [SerializeField] private int settingsMenuIndex;
 
+    private void Awake()
+    {
+        this.tag = "GameManager";
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
+        if (objs.Length > 1)
+        {
+            if (int.TryParse(SceneManager.GetActiveScene().name, out int currentLevel))
+            {
+                int lastUnlockedLevel = PlayerPrefs.GetInt("lastUnlockedLevel");
+                if (currentLevel > lastUnlockedLevel)
+                {
+                    PlayerPrefs.SetInt("lastUnlockedLevel", currentLevel);
+                }
+            }
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -32,14 +51,8 @@ public class GameManager : MonoBehaviour
     {
         deaths = 0;
         Save();
-        int currentUnlockedLevel = PlayerPrefs.GetInt("lastUnlockedLevel", 1);
-        int currentLevel = SceneManager.GetActiveScene().buildIndex - levelSceneOffset;
-        if (currentLevel > currentUnlockedLevel)
-        {
-            PlayerPrefs.SetInt("lastUnlockedLevel", currentLevel + 1);
-        }
-        SceneManager.LoadScene(currentLevel + levelSceneOffset + 1);
         PauseController.paused = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
     public void RequestMainMenu()
     {

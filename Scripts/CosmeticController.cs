@@ -18,7 +18,7 @@ public class CosmeticController : MonoBehaviour
     private Cosmetic activeHat;
     private Cosmetic activeCape;
     private Cosmetic activeShoes;
-    private int currentHat = 1;
+    private int currentHat = 0;
     private int currentCape;
     private int currentShoes;
     private SpriteRenderer rendererHat;
@@ -27,7 +27,11 @@ public class CosmeticController : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("Coins", 500);
+        if (!PlayerPrefs.HasKey("Cosmetic_Unlocked_0"))
+        {
+            PlayerPrefs.SetString("Cosmetic_Unlocked_0", true.ToString());
+        }
+
         unlockedCosmetics = new List<Cosmetic>();
         for (int i=0; i<30; i++)
         {
@@ -129,7 +133,7 @@ public class CosmeticController : MonoBehaviour
     }
     public void OnLastHat()
     {
-        if (currentHat == 1)
+        if (currentHat == 0)
         {
             return;
         }
