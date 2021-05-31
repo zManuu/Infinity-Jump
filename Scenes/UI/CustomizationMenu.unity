@@ -603,7 +603,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1150071680}
         m_TargetAssemblyTypeName: CosmeticController, Assembly-CSharp
-        m_MethodName: OnSelectHat
+        m_MethodName: OnSelectChest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -743,10 +743,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1568750898}
+  - {fileID: 1094582924}
   - {fileID: 689873065}
   - {fileID: 733012152}
   - {fileID: 611212151}
-  - {fileID: 1094582924}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 593242537}
   - component: {fileID: 593242536}
   m_Layer: 5
-  m_Name: Buy
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 724774171}
   - component: {fileID: 724774170}
   m_Layer: 5
-  m_Name: Buy
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2178,7 +2178,7 @@ RectTransform:
   - {fileID: 2040648589}
   - {fileID: 1327822848}
   m_Father: {fileID: 406086712}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2223,6 +2223,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 458096655}
     - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: buyChest
+      value: 
+      objectReference: {fileID: 1603595471}
+    - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
       propertyPath: imageHat
       value: 
       objectReference: {fileID: 1544945334}
@@ -2230,6 +2234,14 @@ PrefabInstance:
       propertyPath: priceHat
       value: 
       objectReference: {fileID: 288034233}
+    - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: imageChest
+      value: 
+      objectReference: {fileID: 659828270}
+    - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: priceChest
+      value: 
+      objectReference: {fileID: 1868931984}
     - target: {fileID: 898020595261641082, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
       propertyPath: coinIndicator
       value: 
@@ -2464,7 +2476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1327822848}
   m_Layer: 5
-  m_Name: Hat (2)
+  m_Name: Shoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2712,7 +2724,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1150071680}
         m_TargetAssemblyTypeName: CosmeticController, Assembly-CSharp
-        m_MethodName: OnLastHat
+        m_MethodName: OnLastChest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3016,7 +3028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7655939531712620418, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7655939531712620418, guid: 8cf8bd66135a7144696399a46e87063e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3193,7 +3205,7 @@ GameObject:
   - component: {fileID: 1582903269}
   - component: {fileID: 1582903268}
   m_Layer: 5
-  m_Name: Buy
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4031,7 +4043,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1150071680}
         m_TargetAssemblyTypeName: CosmeticController, Assembly-CSharp
-        m_MethodName: OnNextHat
+        m_MethodName: OnNextChest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4089,7 +4101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2040648589}
   m_Layer: 5
-  m_Name: Hat (1)
+  m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

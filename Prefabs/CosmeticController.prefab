@@ -47,6 +47,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 929e79e1eb35f984dbb50a920164924e, type: 2}
   - {fileID: 11400000, guid: 6ecc53a62c323784aacfddf610deea71, type: 2}
   - {fileID: 11400000, guid: 808fc974a96ba67408e1b8b26471794c, type: 2}
-  rendererHat: {fileID: 0}
-  rendererCape: {fileID: 0}
-  rendererShoes: {fileID: 0}
+  - {fileID: 11400000, guid: 3eae2f80fcb9c6a43bacb30e2093b44e, type: 2}
+  - {fileID: 11400000, guid: 687e5f112f7d1de4dbbd772c15780a81, type: 2}
+  - {fileID: 11400000, guid: c9923d38253c45c478cb897d311b822e, type: 2}
+  - {fileID: 11400000, guid: 702d4ea5734ecf7418649f94ebc47ad3, type: 2}
+  isCosmeticSelection: 0
+  imageHat: {fileID: 0}
+  imageChest: {fileID: 0}
+  imageShoes: {fileID: 0}
+  priceHat: {fileID: 0}
+  priceChest: {fileID: 0}
+  priceShoes: {fileID: 0}
+  buyHat: {fileID: 0}
+  buyChest: {fileID: 0}
+  buyShoes: {fileID: 0}
+  coinIndicator: {fileID: 0}

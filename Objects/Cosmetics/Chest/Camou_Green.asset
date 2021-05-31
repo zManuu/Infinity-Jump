@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277a47f1bd4c7874292ceb31816d1d5f, type: 3}
+  m_Name: Camou_Green
+  m_EditorClassIdentifier: 
+  type: 1
+  sprite: {fileID: 21300000, guid: 970940a3c6648374e95a693e0c0a395c, type: 3}
+  preview: {fileID: 21300000, guid: 2c2e8ef4d8b8dd143aca90f6ae38b750, type: 3}
+  preferedSizeImage: {x: 100, y: 100}
+  price: 50
