@@ -27,6 +27,7 @@ public class CosmeticController : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt("Coins", 10000);
         if (!PlayerPrefs.HasKey("Cosmetic_Unlocked_0"))
         {
