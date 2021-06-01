@@ -9,6 +9,7 @@ public class LevelSelectionMenuManagement : MonoBehaviour
     public char lockedChar;
     public int levelSceneOffset;
     public bool clearLastUnlockedLevel;
+    [SerializeField] private int managementSceneIndex;
 
     public int levelCount;
 
@@ -52,6 +53,7 @@ public class LevelSelectionMenuManagement : MonoBehaviour
     public void OnButtonClick(int levelIndex)
     {
         SceneManager.LoadScene(levelSceneOffset + levelIndex);
+        SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
     }
 
 }

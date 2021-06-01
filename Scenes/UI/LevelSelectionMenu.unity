@@ -1675,6 +1675,7 @@ MonoBehaviour:
   lockedChar: 45
   levelSceneOffset: 5
   clearLastUnlockedLevel: 0
+  managementSceneIndex: 5
   levelCount: 14
 --- !u!4 &728987418
 Transform:

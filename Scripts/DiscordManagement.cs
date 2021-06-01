@@ -15,6 +15,7 @@ public class DiscordManagement : MonoBehaviour
 
     [SerializeField] private string largeImage;
     [SerializeField] private string largeText;
+    public bool test;
 
     private void Awake()
     {
@@ -22,9 +23,13 @@ public class DiscordManagement : MonoBehaviour
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
         if (objs.Length > 1)
         {
+            Debug.Log("Test");
+            rpcEnabled = bool.Parse(PlayerPrefs.GetString("Discord_RPC_Enabled", "false"));
+            if (rpcEnabled)
+            {
+                ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
+            }
             Destroy(this.gameObject);
-            ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
-            rpcEnabled = bool.Parse(PlayerPrefs.GetString("Discord_RPC_Enabled", "true"));
         }
         DontDestroyOnLoad(this.gameObject);
     }
@@ -33,11 +38,20 @@ public class DiscordManagement : MonoBehaviour
     {
         try
         {
-            timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            discord = new Discord.Discord(844148451449110528, (ulong)CreateFlags.NoRequireDiscord);
-            if (discord != null)
-                activityManager = discord.GetActivityManager();
-            ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
+            rpcEnabled = bool.Parse(PlayerPrefs.GetString("Discord_RPC_Enabled", "false"));
+            Debug.Log(rpcEnabled);
+            if (rpcEnabled)
+            {
+                timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+                discord = new Discord.Discord(844148451449110528, (ulong)CreateFlags.NoRequireDiscord);
+                if (discord != null)
+                    activityManager = discord.GetActivityManager();
+                ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
+            }
+            else
+            {
+                discord = null;
+            }
         } catch (Exception e) {
             Debug.Log(e.StackTrace);
             discord = null;
@@ -48,6 +62,7 @@ public class DiscordManagement : MonoBehaviour
     {
         if (discord != null && rpcEnabled)
             discord.RunCallbacks();
+        test = rpcEnabled;
     }
 
     public void OnApplicationQuit()

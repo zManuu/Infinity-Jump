@@ -44,7 +44,6 @@ public class CosmeticController : MonoBehaviour
         }
 
         activeHat = cosmetics[PlayerPrefs.GetInt("Cosmetic_Active_Hat")];
-        Debug.Log(PlayerPrefs.GetInt("Cosmetic_Active_Chest"));
         activeChest = cosmetics[PlayerPrefs.GetInt("Cosmetic_Active_Chest")];
         //activeShoes = cosmetics[PlayerPrefs.GetInt("Cosmetic_Active_Shoes")];
 

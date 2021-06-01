@@ -17,7 +17,6 @@ public class Movement : MonoBehaviour
     public Transform groundCheckTransform;
     public LayerMask groundCheckLayer;
     public Animator animator;
-    public Transform cameraTransform;
     public Image potionIndicator1;
     public Image potionIndicator2;
     public Image potionIndicator3;
@@ -97,7 +96,6 @@ public class Movement : MonoBehaviour
                 animator.SetTrigger("WalkEnd");
             }
         }
-        cameraTransform.position = transform.position;
     }
 
     private void FixedUpdate()

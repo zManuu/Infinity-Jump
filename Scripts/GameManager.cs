@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int levelSceneOffset;
     [SerializeField] private int mainMenuIndex;
     [SerializeField] private int settingsMenuIndex;
+    [SerializeField] private int managementSceneIndex;
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
         deaths++;
         Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
     }
     public void RequestNextLevel()
     {
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
         Save();
         PauseController.paused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
     }
     public void RequestMainMenu()
     {

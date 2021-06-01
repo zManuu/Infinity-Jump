@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 808fc974a96ba67408e1b8b26471794c, type: 2}
   - {fileID: 11400000, guid: 3eae2f80fcb9c6a43bacb30e2093b44e, type: 2}
   - {fileID: 11400000, guid: 687e5f112f7d1de4dbbd772c15780a81, type: 2}
+  - {fileID: 11400000, guid: be8f6b6948de32a469c05a83f93c1a56, type: 2}
   - {fileID: 11400000, guid: c9923d38253c45c478cb897d311b822e, type: 2}
   - {fileID: 11400000, guid: 702d4ea5734ecf7418649f94ebc47ad3, type: 2}
   isCosmeticSelection: 0
