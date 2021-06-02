@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,8 +12,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int settingsMenuIndex;
     [SerializeField] private int managementSceneIndex;
 
+    [Space]
+    [SerializeField] private Text deathsIndicator;
+
     private void Awake()
     {
+        deathsIndicator = GameObject.Find("UI").transform.GetChild(2).GetChild(1).GetComponent<Text>();
+        if (deaths == 0)
+        {
+            deaths = PlayerPrefs.GetInt("CurrentDeaths", 0);
+        }
+        deathsIndicator.text = deaths.ToString();
         this.tag = "GameManager";
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
         if (objs.Length > 1)

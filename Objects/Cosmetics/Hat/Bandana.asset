@@ -18,5 +18,5 @@ MonoBehaviour:
   preferedSizeImage: {x: 100, y: 38}
   price: 0
   id: 
-  preferedSizeRenderer: {x: 0.7, y: 0.7}
-  yOffset: -0.1
+  preferedSizeRenderer: {x: 0.55, y: 0.55}
+  yOffset: -0.23
