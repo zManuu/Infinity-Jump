@@ -18,3 +18,5 @@ MonoBehaviour:
   preferedSizeImage: {x: 100, y: 100}
   price: 100
   id: HAT_WITCH
+  preferedSizeRenderer: {x: 0.75, y: 0.75}
+  yOffset: 0.1

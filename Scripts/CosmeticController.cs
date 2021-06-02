@@ -61,6 +61,8 @@ public class CosmeticController : MonoBehaviour
         else
         {
             rendererHat = GameObject.Find("Player").transform.GetChild(2).GetComponent<SpriteRenderer>();
+            rendererHat.transform.localScale = activeHat.preferedSizeRenderer;
+            rendererHat.transform.position += new Vector3(0, activeHat.yOffset, 0);
             rendererHat.sprite = activeHat.sprite;
             rendererChest = GameObject.Find("Player").transform.GetChild(3).GetComponent<SpriteRenderer>();
             rendererChest.sprite = activeChest.sprite;

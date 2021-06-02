@@ -18,3 +18,5 @@ MonoBehaviour:
   preferedSizeImage: {x: 100, y: 100}
   price: 100
   id: HAT_WINTER
+  preferedSizeRenderer: {x: 0.5, y: 0.5}
+  yOffset: 0.1

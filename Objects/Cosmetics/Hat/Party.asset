@@ -18,3 +18,5 @@ MonoBehaviour:
   preferedSizeImage: {x: 100, y: 100}
   price: 100
   id: HAT_PARTY
+  preferedSizeRenderer: {x: 0.45, y: 0.45}
+  yOffset: 0.07

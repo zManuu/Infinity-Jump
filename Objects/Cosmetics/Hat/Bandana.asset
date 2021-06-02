@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 277a47f1bd4c7874292ceb31816d1d5f, type: 3}
-  m_Name: Cowboy
+  m_Name: Bandana
   m_EditorClassIdentifier: 
   type: 0
-  sprite: {fileID: 21300000, guid: 4d75d3489885c3e459bb18fa7476c377, type: 3}
+  sprite: {fileID: 21300000, guid: 12784cccc6f3aee4d959252ee1f24e48, type: 3}
   preview: {fileID: 0}
-  preferedSizeImage: {x: 100, y: 58}
-  price: 50
-  id: HAT_COWBOY
-  preferedSizeRenderer: {x: 0.6, y: 0.6}
+  preferedSizeImage: {x: 100, y: 38}
+  price: 0
+  id: 
+  preferedSizeRenderer: {x: 0.7, y: 0.7}
+  yOffset: -0.1

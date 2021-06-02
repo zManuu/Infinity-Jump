@@ -18,3 +18,4 @@ MonoBehaviour:
   preferedSizeImage: {x: 100, y: 58}
   price: 100
   id: HAT_CROWN
+  preferedSizeRenderer: {x: 0.6, y: 0.6}
