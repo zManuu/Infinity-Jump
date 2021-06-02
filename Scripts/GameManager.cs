@@ -12,12 +12,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int settingsMenuIndex;
     [SerializeField] private int managementSceneIndex;
 
-    [Space]
-    [SerializeField] private Text deathsIndicator;
+    private Text deathsIndicator;
 
     private void Awake()
     {
-        deathsIndicator = GameObject.Find("UI").transform.GetChild(2).GetChild(1).GetComponent<Text>();
+        deathsIndicator = GameObject.Find("UI").transform.GetChild(2).GetChild(1).GetChild(2).GetComponent<Text>();
         if (deaths == 0)
         {
             deaths = PlayerPrefs.GetInt("CurrentDeaths", 0);
