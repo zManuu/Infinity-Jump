@@ -17,3 +17,4 @@ MonoBehaviour:
   preview: {fileID: 0}
   preferedSizeImage: {x: 100, y: 100}
   price: 100
+  id: HAT_MAGIC

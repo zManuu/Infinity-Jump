@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &910935674
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853593240341433902, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093767460207647182, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
+      propertyPath: m_Name
+      value: CosmeticController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d588511d7ec09ff4d9a6771901b25b35, type: 3}
 --- !u!1 &1266661048
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,38 +522,6 @@ Transform:
   m_Father: {fileID: 5431290307493912791}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &797371251177430586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8589607537912764046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d37931b77ee55649870d61992688367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cosmetics:
-  - {fileID: 11400000, guid: 929e79e1eb35f984dbb50a920164924e, type: 2}
-  - {fileID: 11400000, guid: 6ecc53a62c323784aacfddf610deea71, type: 2}
-  - {fileID: 11400000, guid: 808fc974a96ba67408e1b8b26471794c, type: 2}
-  - {fileID: 11400000, guid: 3eae2f80fcb9c6a43bacb30e2093b44e, type: 2}
-  - {fileID: 11400000, guid: 687e5f112f7d1de4dbbd772c15780a81, type: 2}
-  - {fileID: 11400000, guid: be8f6b6948de32a469c05a83f93c1a56, type: 2}
-  - {fileID: 11400000, guid: c9923d38253c45c478cb897d311b822e, type: 2}
-  - {fileID: 11400000, guid: 702d4ea5734ecf7418649f94ebc47ad3, type: 2}
-  isCosmeticSelection: 0
-  imageHat: {fileID: 0}
-  imageChest: {fileID: 0}
-  imageShoes: {fileID: 0}
-  priceHat: {fileID: 0}
-  priceChest: {fileID: 0}
-  priceShoes: {fileID: 0}
-  buyHat: {fileID: 0}
-  buyChest: {fileID: 0}
-  buyShoes: {fileID: 0}
-  coinIndicator: {fileID: 0}
 --- !u!4 &941483030415113809
 Transform:
   m_ObjectHideFlags: 0
@@ -590,38 +615,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647123831405280269}
   m_CullTransparentMesh: 1
---- !u!114 &1517668577580563073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7578267215899849269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d37931b77ee55649870d61992688367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cosmetics:
-  - {fileID: 11400000, guid: 929e79e1eb35f984dbb50a920164924e, type: 2}
-  - {fileID: 11400000, guid: 6ecc53a62c323784aacfddf610deea71, type: 2}
-  - {fileID: 11400000, guid: 808fc974a96ba67408e1b8b26471794c, type: 2}
-  - {fileID: 11400000, guid: 3eae2f80fcb9c6a43bacb30e2093b44e, type: 2}
-  - {fileID: 11400000, guid: 687e5f112f7d1de4dbbd772c15780a81, type: 2}
-  - {fileID: 11400000, guid: be8f6b6948de32a469c05a83f93c1a56, type: 2}
-  - {fileID: 11400000, guid: c9923d38253c45c478cb897d311b822e, type: 2}
-  - {fileID: 11400000, guid: 702d4ea5734ecf7418649f94ebc47ad3, type: 2}
-  isCosmeticSelection: 0
-  imageHat: {fileID: 0}
-  imageChest: {fileID: 0}
-  imageShoes: {fileID: 0}
-  priceHat: {fileID: 0}
-  priceChest: {fileID: 0}
-  priceShoes: {fileID: 0}
-  buyHat: {fileID: 0}
-  buyChest: {fileID: 0}
-  buyShoes: {fileID: 0}
-  coinIndicator: {fileID: 0}
 --- !u!222 &1598763264606815817
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1326,20 +1319,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125888463348735091}
   m_CullTransparentMesh: 1
---- !u!4 &5072572445868287445
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7578267215899849269}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7750299488480417951}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5305179452454782421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,7 +1557,6 @@ Transform:
   - {fileID: 8911748422218966622}
   - {fileID: 7187125969994797862}
   - {fileID: 765534362011722846}
-  - {fileID: 6375521102501101934}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1913,20 +1891,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &6375521102501101934
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8589607537912764046}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5431290307493912791}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &6759158636408060976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2072,23 +2036,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinIndicator: {fileID: 0}
---- !u!1 &7578267215899849269
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5072572445868287445}
-  - component: {fileID: 1517668577580563073}
-  m_Layer: 0
-  m_Name: CosmeticController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &7750299488480417920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2150,7 +2097,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4384346518831718587}
-  - {fileID: 5072572445868287445}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2169,7 +2115,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7750299488480417921}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c25f2f69b56c645a6a56594f931b98, type: 3}
   m_Name: 
@@ -2374,23 +2320,6 @@ GameObject:
   - component: {fileID: 7057015396999216979}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &8589607537912764046
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6375521102501101934}
-  - component: {fileID: 797371251177430586}
-  m_Layer: 0
-  m_Name: CosmeticController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

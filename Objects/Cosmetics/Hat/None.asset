@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   sprite: {fileID: 0}
+  preview: {fileID: 0}
   preferedSizeImage: {x: 0, y: 0}
   price: 0
+  id: HAT_NONE

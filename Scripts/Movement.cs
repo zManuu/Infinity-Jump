@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,6 +41,9 @@ public class Movement : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         discordManagement = FindObjectOfType<DiscordManagement>();
+
+        StartCoroutine(CheckGround());
+        StartCoroutine(CheckHeight());
     }
 
     private void Update()
@@ -103,8 +107,8 @@ public class Movement : MonoBehaviour
         if (PauseController.paused)
             return;
 
-        CheckHeight();
-        CheckGround();
+        /*CheckHeight();
+        CheckGround();*/
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) && onGround && !jumpForceAdded && !onLadder)
         {
             transform.GetComponent<Rigidbody2D>().AddForce(jumpVector);
@@ -125,29 +129,37 @@ public class Movement : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    private void CheckGround()
+    private IEnumerator CheckGround()
     {
-        onGround = false;
-        Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.0005f, groundCheckLayer).ToList().ForEach(collider =>
+        while (true)
         {
-            if (collider.gameObject != gameObject)
-                onGround = true;
-        });
-    }
-    private void CheckHeight()
-    {
-        if (transform.position.y < fallHeight)
-        {
-            if (!fallAnimationRunning)
+            onGround = false;
+            Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.0005f, groundCheckLayer).ToList().ForEach(collider =>
             {
-                fallAnimationRunning = true;
-                animator.SetTrigger("WalkEnd");
-                animator.SetTrigger("FallStart");
-                cosmeticHat.parent = null;
-            }
+                if (collider.gameObject != gameObject)
+                    onGround = true;
+            });
+            yield return new WaitForSeconds(0.2f);
         }
-        if (transform.position.y < deathHeight)
-            gameManager.RequestRespawn();
+    }
+    private IEnumerator CheckHeight()
+    {
+        while (true)
+        {
+            if (transform.position.y < fallHeight)
+            {
+                if (!fallAnimationRunning)
+                {
+                    fallAnimationRunning = true;
+                    animator.SetTrigger("WalkEnd");
+                    animator.SetTrigger("FallStart");
+                    cosmeticHat.parent = null;
+                }
+            }
+            if (transform.position.y < deathHeight)
+                gameManager.RequestRespawn();
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -170,7 +182,7 @@ public class Movement : MonoBehaviour
                 Invoke("ClearSpeedEffect", PotionManager.TIME_SPEED);
                 ApplyPotionIndicator(potionIndicationSpeed, PotionManager.TIME_SPEED);
                 discordManagement.ApplyPresence(PotionManager.TEXTURE_SPEED, PotionManager.TEXT_SPEED);
-                Invoke("ClearDiscordPresence", PotionManager.TIME_SPEED);
+                StartCoroutine(ClearDiscordPresence(PotionManager.TIME_SPEED));
                 break;
             case "Potion_JumpBoost":
                 jumpVector *= PotionManager.MULTIPLIER_JUMPBOOST;
@@ -178,14 +190,14 @@ public class Movement : MonoBehaviour
                 Invoke("ClearJumpBoostEffect", PotionManager.TIME_JUMPBOOST);
                 ApplyPotionIndicator(potionIndicationJumpBoost, PotionManager.TIME_JUMPBOOST);
                 discordManagement.ApplyPresence(PotionManager.TEXTURE_JUMPBOOST, PotionManager.TEXT_JUMPBOOST);
-                Invoke("ClearDiscordPresence", PotionManager.TIME_JUMPBOOST);
+                StartCoroutine(ClearDiscordPresence(PotionManager.TIME_JUMPBOOST));
                 break;
             case "Potion_Regeneration":
                 Destroy(collision.gameObject);
                 Invoke("ClearRegenerationEffect", PotionManager.TIME_REGENERATION);
                 ApplyPotionIndicator(potionIndicationRegeneration, PotionManager.TIME_REGENERATION);
                 discordManagement.ApplyPresence(PotionManager.TEXTURE_REGENERATION, PotionManager.TEXT_REGENERATION);
-                Invoke("ClearDiscordPresence", PotionManager.TIME_REGENERATION);
+                StartCoroutine(ClearDiscordPresence(PotionManager.TIME_REGENERATION));
                 break;
             case "Item_Coin":
                 Destroy(collision.gameObject);
@@ -204,20 +216,24 @@ public class Movement : MonoBehaviour
     {
         jumpVector /= PotionManager.MULTIPLIER_JUMPBOOST;
     }
-    private void ClearPotionIndicator1()
+    private IEnumerator ClearPotionIndicator(int indicatorIndex, float delay)
     {
-        potionIndicator1.sprite = null;
-        potionIndicator1.color = new Color(0, 0, 0, 0);
-    }
-    private void ClearPotionIndicator2()
-    {
-        potionIndicator2.sprite = null;
-        potionIndicator2.color = new Color(0, 0, 0, 0);
-    }
-    private void ClearPotionIndicator3()
-    {
-        potionIndicator3.sprite = null;
-        potionIndicator3.color = new Color(0, 0, 0, 0);
+        yield return new WaitForSeconds(delay);
+        switch (indicatorIndex)
+        {
+            case 1:
+                potionIndicator1.sprite = null;
+                potionIndicator1.color = new Color(0, 0, 0, 0);
+                break;
+            case 2:
+                potionIndicator2.sprite = null;
+                potionIndicator2.color = new Color(0, 0, 0, 0);
+                break;
+            case 3:
+                potionIndicator3.sprite = null;
+                potionIndicator3.color = new Color(0, 0, 0, 0);
+                break;
+        }
     }
     private void ApplyPotionIndicator(Sprite potionSprite, float time)
     {
@@ -225,25 +241,26 @@ public class Movement : MonoBehaviour
         {
             potionIndicator1.sprite = potionSprite;
             potionIndicator1.color = new Color(255, 255, 255, 200);
-            Invoke("ClearPotionIndicator1", time);
+            StartCoroutine(ClearPotionIndicator(1, time));
         } else if (potionIndicator2.sprite == null)
         {
             potionIndicator2.sprite = potionSprite;
             potionIndicator2.color = new Color(255, 255, 255, 200);
-            Invoke("ClearPotionIndicator2", time);
+            StartCoroutine(ClearPotionIndicator(2, time));
         } else
         {
             potionIndicator3.sprite = potionSprite;
             potionIndicator3.color = new Color(255, 255, 255, 200);
-            Invoke("ClearPotionIndicator3", time);
+            StartCoroutine(ClearPotionIndicator(3, time));
         }
     }
     private void ClearItemTaken()
     {
         itemTaken = false;
     }
-    private void ClearDiscordPresence()
+    private IEnumerator ClearDiscordPresence(float delay)
     {
+        yield return new WaitForSeconds(delay);
         discordManagement.ApplyPresence(PotionManager.TEXTURE_NONE, PotionManager.TEXT_NONE);
     }
 

@@ -23,7 +23,6 @@ public class LevelSelectionMenuManagement : MonoBehaviour
             PlayerPrefs.SetInt("lastUnlockedLevel", 1);
         }
         lastUnlockedLevel = PlayerPrefs.GetInt("lastUnlockedLevel", 1);
-        Debug.Log(lastUnlockedLevel);
         buttons = new Transform[buttonContainer.childCount];
         for (int i=0; i<buttonContainer.childCount; i++)
         {

@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Linq;
 
 public class CosmeticController : MonoBehaviour
 {
 
-    [Tooltip("0-9: hats\n10-19: caps\n20-29: shoes")] [SerializeField]
-    private Cosmetic[] cosmetics;
-
+    [SerializeField] private Cosmetic[] cosmetics;
     [SerializeField] private bool isCosmeticSelection;
     [SerializeField] private Image imageHat, imageChest, imageShoes;
     [SerializeField] private Text priceHat, priceChest, priceShoes;
@@ -27,25 +26,27 @@ public class CosmeticController : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetInt("Coins", 10000);
-        if (!PlayerPrefs.HasKey("Cosmetic_Unlocked_0"))
+        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.SetInt("Coins", 10000);
+        if (!PlayerPrefs.HasKey("Cosmetic_Active_Hat"))
         {
-            PlayerPrefs.SetString("Cosmetic_Unlocked_0", true.ToString());
-            PlayerPrefs.SetString("Cosmetic_Unlocked_3", true.ToString());
+            PlayerPrefs.SetString("Cosmetics_Unlocked_" + cosmetics[0].id, "true");
+            PlayerPrefs.SetString("Cosmetics_Unlocked_" + cosmetics[GetFirstIndexOf(CosmeticType.Chest)].id, "true");
+            PlayerPrefs.SetString("Cosmetic_Active_Hat", cosmetics[0].id);
+            PlayerPrefs.SetString("Cosmetic_Active_Chest", cosmetics[GetFirstIndexOf(CosmeticType.Chest)].id);
         }
 
         unlockedCosmetics = new List<Cosmetic>();
-        for (int i=0; i<cosmetics.Length; i++)
+        for (int i = 0; i < cosmetics.Length; i++)
         {
-            if (bool.Parse(PlayerPrefs.GetString("Cosmetic_Unlocked_" + i, "false")))
+            if (bool.Parse(PlayerPrefs.GetString("Cosmetic_Unlocked_" + cosmetics[i].id, "false")))
             {
                 unlockedCosmetics.Add(cosmetics[i]);
             }
         }
 
-        activeHat = cosmetics[PlayerPrefs.GetInt("Cosmetic_Active_Hat")];
-        activeChest = cosmetics[PlayerPrefs.GetInt("Cosmetic_Active_Chest")];
+        activeHat = cosmetics[GetIndexByID(PlayerPrefs.GetString("Cosmetic_Active_Hat"))];
+        activeChest = cosmetics[GetIndexByID(PlayerPrefs.GetString("Cosmetic_Active_Chest"))];
         //activeShoes = cosmetics[PlayerPrefs.GetInt("Cosmetic_Active_Shoes")];
 
         if (isCosmeticSelection)
@@ -71,11 +72,11 @@ public class CosmeticController : MonoBehaviour
     {
         unlockedCosmetics.ForEach(unlockedCosmetic =>
         {
-            PlayerPrefs.SetString("Cosmetic_Unlocked_" + GetIndex(unlockedCosmetic), "true");
+            PlayerPrefs.SetString("Cosmetic_Unlocked_" + unlockedCosmetic.id, "true");
         });
-        PlayerPrefs.SetInt("Cosmetic_Active_Hat", GetIndex(activeHat));
-        PlayerPrefs.SetInt("Cosmetic_Active_Chest", GetIndex(activeChest));
-        PlayerPrefs.SetInt("Cosmetic_Active_Shoes", GetIndex(activeShoes));
+        PlayerPrefs.SetString("Cosmetic_Active_Hat", activeHat.id);
+        PlayerPrefs.SetString("Cosmetic_Active_Chest", activeChest.id);
+        //PlayerPrefs.SetString("Cosmetic_Active_Shoes", activeShoes.id);
     }
 
     public int GetIndex(Cosmetic cosmetic)
@@ -84,6 +85,17 @@ public class CosmeticController : MonoBehaviour
         {
             if (cosmetics[i].Equals(cosmetic))
                 return i;
+        }
+        return -1;
+    }
+    public int GetIndexByID(string id)
+    {
+        for(int i=0; i<cosmetics.Length; i++)
+        {
+            if (cosmetics[i].id.Equals(id))
+            {
+                return i;
+            }
         }
         return -1;
     }

@@ -23,7 +23,6 @@ public class DiscordManagement : MonoBehaviour
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
         if (objs.Length > 1)
         {
-            Debug.Log("Test");
             rpcEnabled = bool.Parse(PlayerPrefs.GetString("Discord_RPC_Enabled", "false"));
             if (rpcEnabled)
             {
@@ -39,7 +38,6 @@ public class DiscordManagement : MonoBehaviour
         try
         {
             rpcEnabled = bool.Parse(PlayerPrefs.GetString("Discord_RPC_Enabled", "false"));
-            Debug.Log(rpcEnabled);
             if (rpcEnabled)
             {
                 timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -65,10 +63,7 @@ public class DiscordManagement : MonoBehaviour
         test = rpcEnabled;
     }
 
-    public void OnApplicationQuit()
-    {
-        ClearRPC();
-    }
+    public void OnApplicationQuit() => ClearRPC();
 
     public void ClearRPC()
     {
@@ -89,13 +84,13 @@ public class DiscordManagement : MonoBehaviour
             return;
 
         Activity a = GenerateActivity(smallTexture, smallText);
-        activityManager.UpdateActivity(a, (res) =>
+        /*activityManager.UpdateActivity(a, (res) =>
         {
-            /*if (res == Result.Ok)
+            if (res == Result.Ok)
                 Debug.Log(string.Format("Discord status was set! [{0} | {1}]", SceneManager.GetActiveScene().name, smallText));
             else
-                Debug.LogWarning("Settings the discord status failed!");*/
-        });
+                Debug.LogWarning("Settings the discord status failed!");
+        });*/
     }
     private Activity GenerateActivity(string smallTexture, string smallText)
     {
