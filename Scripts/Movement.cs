@@ -157,7 +157,7 @@ public class Movement : MonoBehaviour
                 }
             }
             if (transform.position.y < deathHeight)
-                gameManager.RequestRespawn();
+                StartCoroutine(gameManager.RequestRespawn());
             yield return new WaitForSeconds(0.2f);
         }
     }
@@ -173,7 +173,7 @@ public class Movement : MonoBehaviour
         switch (collision.tag)
         {
             case "LevelTrigger":
-                gameManager.RequestNextLevel();
+                StartCoroutine(gameManager.RequestNextLevel());
                 break;
             case "Potion_Speed":
                 moveLeft *= PotionManager.MULTIPLIER_SPEED;

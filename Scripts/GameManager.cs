@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -51,18 +52,23 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
-    public void RequestRespawn()
+    public IEnumerator RequestRespawn()
     {
+        GameObject.Find("UI").GetComponent<Animator>().SetTrigger("TransitionEnd");
         deaths++;
         Save();
+        //Debug.Log(levelTransitionAnimator == null);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
     }
-    public void RequestNextLevel()
+    public IEnumerator RequestNextLevel()
     {
+        GameObject.Find("UI").GetComponent<Animator>().SetTrigger("TransitionEnd");
         deaths = 0;
         Save();
         PauseController.paused = false;
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
     }
