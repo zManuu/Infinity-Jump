@@ -26,17 +26,17 @@ public class Movement : MonoBehaviour
     public Sprite potionIndicationRegeneration;
     public Transform cosmeticHat;
 
-    private bool facingRight = true; // player is facing right at the start
+    private bool facingRight = true;
     private bool facingLeft = false;
-    private bool onGround = false; // player spawn in the air
-    private bool walkAnimationRunning = false; // player isn't walking at the start of the game
+    private bool onGround = false;
+    private bool walkAnimationRunning = false;
     private GameManager gameManager;
     private bool jumpForceAdded = false;
     private bool fallAnimationRunning = false;
     private bool itemTaken = false;
     private bool onLadder = false;
     private DiscordManagement discordManagement;
-    private bool nextLevelTriggered;
+    private bool nextLevelTriggered = false;
 
     private void Start()
     {
@@ -45,8 +45,6 @@ public class Movement : MonoBehaviour
 
         StartCoroutine(CheckGround());
         StartCoroutine(CheckHeight());
-
-        nextLevelTriggered = false;
     }
 
     private void Update()
