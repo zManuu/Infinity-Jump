@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int managementSceneIndex;
 
     private Text deathsIndicator;
+    private bool deathCalled;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         {
             deaths = PlayerPrefs.GetInt("CurrentDeaths", 0);
         }
+        deathCalled = false;
         deathsIndicator.text = deaths.ToString();
         this.tag = "GameManager";
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
@@ -54,13 +56,17 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator RequestRespawn()
     {
-        GameObject.Find("UI").GetComponent<Animator>().SetTrigger("TransitionEnd");
-        deaths++;
-        Save();
-        //Debug.Log(levelTransitionAnimator == null);
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
+        if (!deathCalled)
+        {
+            GameObject.Find("UI").GetComponent<Animator>().SetTrigger("TransitionEnd");
+            deathCalled = true;
+            deaths++;
+            Save();
+            yield return new WaitForSeconds(1f);
+            deathCalled = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
+        }
     }
     public IEnumerator RequestNextLevel()
     {

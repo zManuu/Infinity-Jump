@@ -36,6 +36,7 @@ public class Movement : MonoBehaviour
     private bool itemTaken = false;
     private bool onLadder = false;
     private DiscordManagement discordManagement;
+    private bool nextLevelTriggered;
 
     private void Start()
     {
@@ -44,11 +45,13 @@ public class Movement : MonoBehaviour
 
         StartCoroutine(CheckGround());
         StartCoroutine(CheckHeight());
+
+        nextLevelTriggered = false;
     }
 
     private void Update()
     {
-        if (PauseController.paused)
+        if (PauseController.paused || nextLevelTriggered)
             return;
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -104,11 +107,9 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (PauseController.paused)
+        if (PauseController.paused || nextLevelTriggered)
             return;
 
-        /*CheckHeight();
-        CheckGround();*/
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) && onGround && !jumpForceAdded && !onLadder)
         {
             transform.GetComponent<Rigidbody2D>().AddForce(jumpVector);
@@ -173,6 +174,8 @@ public class Movement : MonoBehaviour
         switch (collision.tag)
         {
             case "LevelTrigger":
+                nextLevelTriggered = true;
+                animator.SetTrigger("WalkEnd");
                 StartCoroutine(gameManager.RequestNextLevel());
                 break;
             case "Potion_Speed":
