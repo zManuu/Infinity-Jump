@@ -238,6 +238,11 @@ public class Movement : MonoBehaviour
     }
     private void ApplyPotionIndicator(Sprite potionSprite, float time)
     {
+
+        // Sound
+        SoundController soundController = FindObjectOfType<SoundController>();
+        soundController.Play(soundController.powerUp);
+
         if (potionIndicator1.sprite == null)
         {
             potionIndicator1.sprite = potionSprite;

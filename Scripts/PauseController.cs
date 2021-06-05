@@ -15,8 +15,15 @@ public class PauseController : MonoBehaviour
 
         CoinManagement.CoinAddEvent += (newBalance) =>
         {
+            // Animation
             GameObject.Find("UI").transform.GetChild(2).GetChild(0).GetComponent<Animator>().SetTrigger("Coin_Pickup");
+
+            // Coin indicator
             FindObjectOfType<UIContainer>().coinIndicator.text = newBalance.ToString();
+
+            // Sound
+            SoundController soundController = FindObjectOfType<SoundController>();
+            soundController.Play(soundController.coinPickup);
         };
     }
 

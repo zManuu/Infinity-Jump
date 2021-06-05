@@ -59,27 +59,55 @@ public class GameManager : MonoBehaviour
     {
         if (!deathCalled)
         {
+            // Level transition
             GameObject.Find("UI").transform.GetChild(3).GetComponent<Animator>().SetTrigger("TransitionEnd");
+
+            // Used so it is only called once
             deathCalled = true;
+
+            // Add a death
             deaths++;
             Save();
+
+            // Sound
+            SoundController soundController = FindObjectOfType<SoundController>();
+            soundController.Play(soundController.death);
+
             yield return new WaitForSeconds(1f);
+
             deathCalled = false;
+
+            // Reload active scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
         }
     }
     public IEnumerator RequestNextLevel()
     {
+        // Sound
+        SoundController soundController = FindObjectOfType<SoundController>();
+        soundController.Play(soundController.levelComplete);
+
+        // Particles
         levelCompleteParticleSystem = GameObject.Find("Particles").transform.GetChild(0).transform;
         levelCompleteParticleSystem.transform.position = GameObject.Find("LevelTrigger").transform.position + new Vector3(0f, 5f, 0f);
         levelCompleteParticleSystem.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(2f);
+
+        // Level transition
         GameObject.Find("UI").transform.GetChild(3).GetComponent<Animator>().SetTrigger("TransitionEnd");
+
+        // Reset deaths
         deaths = 0;
         Save();
+
+        // Unpause game
         PauseController.paused = false;
+
         yield return new WaitForSeconds(1f);
+
+        // Load scene of the next level
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
     }
