@@ -15,6 +15,7 @@ public class PauseController : MonoBehaviour
 
         CoinManagement.CoinAddEvent += (newBalance) =>
         {
+            GameObject.Find("UI").transform.GetChild(2).GetChild(0).GetComponent<Animator>().SetTrigger("Coin_Pickup");
             FindObjectOfType<UIContainer>().coinIndicator.text = newBalance.ToString();
         };
     }

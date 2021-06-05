@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int settingsMenuIndex;
     [SerializeField] private int managementSceneIndex;
 
+    private Transform levelCompleteParticleSystem;
     private Text deathsIndicator;
     private bool deathCalled;
 
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         if (!deathCalled)
         {
-            GameObject.Find("UI").GetComponent<Animator>().SetTrigger("TransitionEnd");
+            GameObject.Find("UI").transform.GetChild(3).GetComponent<Animator>().SetTrigger("TransitionEnd");
             deathCalled = true;
             deaths++;
             Save();
@@ -70,7 +71,11 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator RequestNextLevel()
     {
-        GameObject.Find("UI").GetComponent<Animator>().SetTrigger("TransitionEnd");
+        levelCompleteParticleSystem = GameObject.Find("Particles").transform.GetChild(0).transform;
+        levelCompleteParticleSystem.transform.position = GameObject.Find("LevelTrigger").transform.position + new Vector3(0f, 5f, 0f);
+        levelCompleteParticleSystem.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        GameObject.Find("UI").transform.GetChild(3).GetComponent<Animator>().SetTrigger("TransitionEnd");
         deaths = 0;
         Save();
         PauseController.paused = false;
