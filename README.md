@@ -19,7 +19,6 @@ Older builds can be found <a href="Releases/">here</a>.
 <a href="https://github.com/Cybermork">LevelDesign</a><br>
 <a href="https://rottingpixels.itch.io/">TileSet</a><br>
 <a href="https://fontspace.com/ghielz">Font</a><br>
-<a href="https://icoso.itch.io/">Background Music</a>
 ### Music
 <ul>
  <li><a href="https://www.youtube.com/channel/UCd789vU_N_G8UYYP3keTf9A">Digital attack</a></li>
