@@ -19,6 +19,10 @@ public class SettingsMenuManagement : MonoBehaviour
     {
         musicVolumeIndicator.text = musicVolumeSlider.value.ToString() + "%";
         PlayerPrefs.SetFloat("Music_Volume", musicVolumeSlider.value / 100);
+        if (FindObjectOfType<AudioManager>() != null)
+        {
+            FindObjectOfType<AudioManager>().playingSong.volume = musicVolumeSlider.value / 100;
+        }
     }
 
     public void OnDiscordRPCChange()

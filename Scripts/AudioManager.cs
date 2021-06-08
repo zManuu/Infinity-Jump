@@ -4,28 +4,30 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
 
-    public AudioSource musicSource;
+    public AudioSource playingSong;
+    public AudioSource[] songs;
+
+    private int currentSong;
 
     void Awake()
     {
         this.tag = "GameManager";
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
-        musicSource.volume = PlayerPrefs.GetFloat("Music_Volume", 0.2f);
 
         if (objs.Length > 1)
         {
-            if (musicSource.isPlaying)
-            {
-                musicSource.UnPause();
-            }
             Destroy(this.gameObject);
+        } else
+        {
+            // Code will be executed, if this script is loaded for the first time
+            PlaySong();
         }
         if (!int.TryParse(SceneManager.GetActiveScene().name, out int i))
         {
             // Code will be executed, if the scene isn't a level scene
-            if (musicSource.isPlaying)
+            if (playingSong.isPlaying)
             {
-                musicSource.Pause();
+                playingSong.Pause();
             }
         }
 
@@ -34,13 +36,48 @@ public class AudioManager : MonoBehaviour
 
     public void OnClickPause()
     {
-        if (musicSource.isPlaying)
+        if (playingSong.isPlaying)
         {
-            musicSource.Pause();
+            playingSong.Pause();
         } else
         {
-            musicSource.UnPause();
+            playingSong.UnPause();
         }
+    }
+
+    public void OnClickNext()
+    {
+        if (currentSong >= songs.Length - 1)
+        {
+            PlayerPrefs.SetInt("Music_Song_ID", songs.Length - 1);
+            return;
+        }
+        Debug.Log("[Music] Stopping: " + currentSong);
+        playingSong.Stop();
+        PlayerPrefs.SetInt("Music_Song_ID", currentSong + 1);
+        PlaySong();
+    }
+
+    public void OnClickLast()
+    {
+        if (currentSong <= 0)
+        {
+            PlayerPrefs.SetInt("Music_Song_ID", 0);
+            return;
+        }
+        Debug.Log("[Music] Stopping: " + currentSong);
+        playingSong.Stop();
+        PlayerPrefs.SetInt("Music_Song_ID", currentSong - 1);
+        PlaySong();
+    }
+
+    private void PlaySong()
+    {
+        currentSong = PlayerPrefs.GetInt("Music_Song_ID", 0);
+        Debug.Log("[Music] Playing: " + currentSong);
+        playingSong = songs[currentSong];
+        playingSong.volume = PlayerPrefs.GetFloat("Music_Volume", 0.2f);
+        playingSong.Play();
     }
 
 }

@@ -70,4 +70,17 @@ public class PauseController : MonoBehaviour
         FindObjectOfType<GameManager>().RequestMainMenu();
     }
 
+    public void HandlePauseMusicClick()
+    {
+        FindObjectOfType<AudioManager>().OnClickPause();
+    }
+    public void HandleNextMusicClick()
+    {
+        FindObjectOfType<AudioManager>().OnClickNext();
+    }
+    public void HandleLastMusicClick()
+    {
+        FindObjectOfType<AudioManager>().OnClickLast();
+    }
+
 }
