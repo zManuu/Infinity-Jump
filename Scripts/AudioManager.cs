@@ -77,6 +77,7 @@ public class AudioManager : MonoBehaviour
         Debug.Log("[Music] Playing: " + currentSong);
         playingSong = songs[currentSong];
         playingSong.volume = PlayerPrefs.GetFloat("Music_Volume", 0.2f);
+        FindObjectOfType<UIContainer>().musicIndicator.text = playingSong.name;
         playingSong.Play();
     }
 

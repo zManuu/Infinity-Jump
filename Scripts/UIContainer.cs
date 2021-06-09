@@ -8,5 +8,6 @@ public class UIContainer : MonoBehaviour
 
     public Transform pauseMenuContainer;
     public Text coinIndicator;
+    public Text musicIndicator;
 
 }
