@@ -73,6 +73,10 @@ public class GameManager : MonoBehaviour
             SoundController soundController = FindObjectOfType<SoundController>();
             soundController.Play(soundController.death);
 
+            // Time coroutine
+            StatsController statsController = FindObjectOfType<StatsController>();
+            statsController.paused = true;
+
             yield return new WaitForSeconds(1f);
 
             deathCalled = false;
@@ -80,6 +84,11 @@ public class GameManager : MonoBehaviour
             // Reload active scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
+
+            // Time coroutine
+            StatsController b = FindObjectOfType<StatsController>();
+            statsController.time = 0f;
+            statsController.paused = false;
         }
     }
     public IEnumerator RequestNextLevel()
@@ -105,11 +114,20 @@ public class GameManager : MonoBehaviour
         // Unpause game
         PauseController.paused = false;
 
+        // Time coroutine
+        StatsController statsController = FindObjectOfType<StatsController>();
+        statsController.paused = true;
+
         yield return new WaitForSeconds(1f);
 
         // Load scene of the next level
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
+
+        // Time coroutine
+        StatsController b = FindObjectOfType<StatsController>();
+        statsController.time = 0f;
+        statsController.paused = false;
     }
     public void RequestMainMenu()
     {
