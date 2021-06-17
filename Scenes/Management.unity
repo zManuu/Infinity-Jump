@@ -2442,7 +2442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10082,10 +10082,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235a89266bdc97f4385953de112466ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSceneOffset: 5
+  levelSceneOffset: 6
   mainMenuIndex: 0
   settingsMenuIndex: 2
-  managementSceneIndex: 5
+  managementSceneIndex: 6
 --- !u!1 &7750299488480417921
 GameObject:
   m_ObjectHideFlags: 0
@@ -10119,7 +10119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562a998787f2a224e8c4973c3bec80ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSceneOffset: 0
   time: 0
+  paused: 0
+  levelHighscore: 5
 --- !u!114 &7750299488480417950
 MonoBehaviour:
   m_ObjectHideFlags: 0

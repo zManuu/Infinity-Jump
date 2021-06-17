@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
             StatsController b = FindObjectOfType<StatsController>();
             statsController.time = 0f;
             statsController.paused = false;
+            statsController.levelHighscore = PlayerPrefs.GetFloat("Highscore_" + (SceneManager.GetActiveScene().buildIndex - levelSceneOffset));
         }
     }
     public IEnumerator RequestNextLevel()
@@ -117,6 +118,7 @@ public class GameManager : MonoBehaviour
         // Time coroutine
         StatsController statsController = FindObjectOfType<StatsController>();
         statsController.paused = true;
+        statsController.RequestHighscoreUpdate();
 
         yield return new WaitForSeconds(1f);
 
@@ -131,11 +133,13 @@ public class GameManager : MonoBehaviour
     }
     public void RequestMainMenu()
     {
+        FindObjectOfType<StatsController>().paused = true;
         Save();
         SceneManager.LoadScene(mainMenuIndex);
     }
     public void RequestSettingsMenu()
     {
+        FindObjectOfType<StatsController>().paused = true;
         Save();
         SceneManager.LoadScene(settingsMenuIndex);
     }

@@ -10,6 +10,7 @@ public class LevelSelectionMenuManagement : MonoBehaviour
     public int levelSceneOffset;
     public bool clearLastUnlockedLevel;
     [SerializeField] private int managementSceneIndex;
+    [SerializeField] private int levelStartSceneIndex;
 
     public int levelCount;
 
@@ -51,8 +52,17 @@ public class LevelSelectionMenuManagement : MonoBehaviour
 
     public void OnButtonClick(int levelIndex)
     {
-        SceneManager.LoadScene(levelSceneOffset + levelIndex);
-        SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
+        //SceneManager.LoadScene(levelSceneOffset + levelIndex);
+        //SceneManager.LoadScene(managementSceneIndex, LoadSceneMode.Additive);
+        PlayerPrefs.SetInt("StartingLevel", levelIndex);
+        SceneManager.LoadScene(levelStartSceneIndex);
+
+        StatsController statsController = FindObjectOfType<StatsController>();
+        if (statsController != null)
+        {
+            statsController.time = 0f;
+            statsController.paused = false;
+        }
     }
 
 }
